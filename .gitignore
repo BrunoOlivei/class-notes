@@ -1,1 +1,11 @@
 /.obsidian
+venv
+!.ipynb_checkponts
+__pycache__
+famp-secao2
+famp-secao3
+famp-secao4
+.idea
+.pytest_cache
+buscavogal.egg-info
+novoenv
