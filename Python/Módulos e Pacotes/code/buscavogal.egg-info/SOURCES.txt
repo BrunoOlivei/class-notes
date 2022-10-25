@@ -1,0 +1,7 @@
+README.txt
+buscavogal.py
+setup.py
+buscavogal.egg-info/PKG-INFO
+buscavogal.egg-info/SOURCES.txt
+buscavogal.egg-info/dependency_links.txt
+buscavogal.egg-info/top_level.txt

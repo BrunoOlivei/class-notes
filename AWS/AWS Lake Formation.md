@@ -1,0 +1,1 @@
+https://aws.amazon.com/pt/lake-formation/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc

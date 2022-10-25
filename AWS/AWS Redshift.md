@@ -1,0 +1,1 @@
+[https://aws.amazon.com/pt/redshift/](https://aws.amazon.com/pt/redshift/)
