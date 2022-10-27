@@ -9,3 +9,6 @@ famp-secao4
 .pytest_cache
 buscavogal.egg-info
 novoenv
+!.pdf
+.env
+*.pdf
