@@ -4,6 +4,8 @@ Se você tem gosto por entender mais sobre o negócio em que está inserido, ou 
 
 ## Engenharia de dados - *Data Engineer*
 
+#engenhariadedados #engenheirodedados #dataengineer 
+
 Responsável por trazer os dados que estão em locais distintos, pensando em formas de governança, de forma estruturada e estabelecê-los conforme regras de negócio, respeitando padrões para que análistas e ciêntistas consigam trabalhar.
 
 Exemplo: base de dados coletadas em vários países, para identificar um usuário, usualmente usa-se o CPF `r"\d{3}.\d{3}.\d{3}-\d{2}` em outros países o identificador pode conter outra formatação, como, por exemplo letras, dígitos, etc. 
@@ -34,6 +36,8 @@ Por isso a importância de conhecer sobre o negócio, visualizando as necessidad
 ----
 
 ## Análise de dados e BA - *Data Analyst and Data Business Analyst*
+
+#analisededados #analistadedados #dataanalysis #dataanalyst
 
 Responsáveis por tirar insights dos dados coletados pelo engenheiro. Nessa etapa o ideal é que os dados já estejam coerentes com a necessidade, havendo o mínimo de necessidade de tratamento. 
 
@@ -77,6 +81,8 @@ Machine learning também pode ser importante para lidar com alguns tipos de mode
 ---
 
 ## Ciência de dados - *Data Scientist*
+
+#cienciadedados #cientistadedados #datascience #datascientist
 
 Esse porfissional precisa possuir conceitos de programação, como OOP para criar códigos mais estruturados que facilitarão o trabalho da pessoa engenheira de machine learning, matemática é crucial, nesse a importância de entender o que há por trás de cada modelo de machine learning faz toda a diferença e evita resultados indesejados, concomitantemente a skills em matemática o conhecimento de machine learning também tem sua importância. 
 
@@ -127,7 +133,7 @@ Já a comunicação tem sua importância uma vez que será necessário transmiti
 
 ---
 
-## Engenharia de machine learning
+## Engenharia de machine learning - *MLOps*
 
 A pessoa engenheira de machine learning precisa ter conhecimentos de engenharia de software tradicionais como a parte de dados. Esses profissionais são responsáveis por colocar em produção os modelos desenvolvidos pelos cientistas. 
 
@@ -184,6 +190,8 @@ Importante ressaltar que esse profissional necessariamente estará constantement
 
 ## Gerente de produto de dados
 
+#gerentedeprodutodedados #dataproductmanager
+
 Essa pessoa estará mais focada no produto, não havendo um apelo tão técnico, por isso a ênfase nas habilidade de comunicação e visualização, uma vez que esse profissional estará intimamente ligado aos stakeholders, traduzindo para o time técnico os requisitos e gerenciando um backlog, um world map, passando também por todas as necessidades de governança de dados e escalabilidade. 
 
 | Skill            | Points     |
@@ -214,3 +222,4 @@ Essa pessoa estará mais focada no produto, não havendo um apelo tão técnico,
 - **Gerenciamento**: backlogs e roadmaps para suporte de tomada de decisão, de riscos da solução e mensuração de valor entregue
 - **Liderança**: compreensão do papel de cada pessoa dentro do time de dados
 - **Ferramentas**: AzureDevOps, Jira, Miro, Muraç e planilhas e apresentações
+

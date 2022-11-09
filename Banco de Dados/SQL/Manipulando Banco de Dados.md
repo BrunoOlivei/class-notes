@@ -170,3 +170,32 @@ Utilizado para armazenar a representação binária de uma foto, por exemplo, e 
 [MySQL :: MySQL 5.6 Reference Manual :: 13.1.17 CREATE TABLE Statement](https://dev.mysql.com/doc/refman/5.6/en/create-table.html)
 
 ---
+
+```MySQL
+CREATE TABLE Estudante (
+    RegistroAluno INT NOT NULL,
+    NomeCompleto VARCHAR(50) NULL,
+    Endereço VARCHAR(100) NULL,
+    Cidade VARCHAR(50) NULL,
+    DataMatricula DATE NULL,
+    NomePai VARCHAR(50) NULL,
+    NomeMae VARCHAR(50) NULL,
+    PRIMARY KEY(RegistroAluno));
+
+CREATE TABLE Professor (
+    RegistroProfessor INT NOT NULL PRIMARY KEY,
+    NomeCompletoProfessor VARCHAR(50) NULL,
+    Endereço VARCHAR(100) NULL,
+    Cidade VARCHAR(50) NULL,
+    DataAdmissao DATE NULL);
+
+CREATE TABLE Disciplina (
+    RegistroDisciplina INT NOT NULL PRIMARY KEY,
+    RegistroProfessor INT NOT NULL,
+    Descrição VARCHAR(50) NULL,
+    DataCriacao DATE NULL,
+    Horário VARCHAR(50) NULL,
+    CONSTRAINT fk_RegistroProfessor FOREIGN KEY (RegistroProfessor) REFERENCES professor(RegistroProfessor)
+);
+```
+
