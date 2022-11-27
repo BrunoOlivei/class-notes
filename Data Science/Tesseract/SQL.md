@@ -83,7 +83,7 @@ Quando colocado o `WHERE` com comparação de `NULL`, ele se torna excludente e 
 
 ## RIGTH \[OUTER] JOIN
 
-Retorna todos os registros da tavela direita e os correspondentes da tabela esquerda
+Retorna todos os registros da tabela direita e os correspondentes da tabela esquerda
 
 ```MySQL
 SELECT E.NomeCompleto, B.Nota1, B.Nota2, B.Nota3
@@ -92,7 +92,7 @@ RIGHT JOIN Estudante E
 ON B.RegistroAluno = E.RegistroAluno;
 ```
 
-Quando colocadoo where com comparação de null, ele se torna excludente e traz todos os registros da tabela direita, exceto os que fazem match com a tabela esquerda.
+Quando colocado o where com comparação de null, ele se torna excludente e traz todos os registros da tabela direita, exceto os que fazem match com a tabela esquerda.
 
 ```MySQL
 SELECT E.NomeCompleto, B.Nota1, B.Nota2, B.Nota3
@@ -103,4 +103,157 @@ WHERE B.RegistroAluno IS NULL;
 ```
 
 ## FULL \[OUTER] JOIN
+
+Trás os dados que estão em ambas as tabelas.
+
+```MySQL
+SELECT L.Cidade, V.Quantidade
+FROM Lojas L
+FULL JOIN Vendas V
+ON L.IdLoja = V.IdLoja;
+```
+
+Quando utilizado o NULL, ele retorna os dados excludentes, ou seja, os dados que não se relacionam entre as tabelas.
+
+```MySQL
+SELECT L.Cidade, V.Quantidade
+FROM Lojas L
+FULL JOIN Vendas V
+ON L.IdLoja = V.IdLoja
+WHERE L.IdLoja IS NULL OR V.IdLoja IS NULL;
+```
+
+# Operadores
+
+Aritméticos, relacionais, lógicos e auxiliares.
+
+## Aritméticos
+
+| Operador |     Operação      |
+|:--------:|:-----------------:|
+|    +     |      adição       |
+|    -     |     subtração     |
+|    *     |   multiplicação   |
+|    /     |      divisão      |
+|    %     | restro da divisão |
+
+```MySQL
+SELECT 1 + 2 + 3 AS SOMA;
+
+SELECT (1 + 2) * 3 AS UmMaisDoisVezesTres;
+
+SELECT Salario + 10
+FROM Funcionario;
+
+SELECT Salario * 0,90
+FROM Funcionario;
+
+SELECT Nota1, Nota2, Nota3, (Nota1 + Nota2 + Nota3) AS SomaNotas
+FROM Boletim
+WHERE RegistroAluno = 561257;
+```
+
+## Relacionais
+
+| Operador |     Operação     |
+|:--------:|:----------------:|
+|    >     |    maior que     |
+|    <     |    menor que     |
+|    =     |     igual a      |
+| <> ou != |   diferente de   |
+|    >=    | maior ou igual a |
+|    <=    | menor ou igual a |
+
+```MySQL
+SELECT *
+FROM Funcionario
+WHERE salario > 1500;
+
+SELECT *
+FROM Funcionario
+WHERE salario < 1500;
+
+SELECT *
+FROM Funcionario
+WHERE Cidade = 'Curitiba';
+
+SELECT *
+FROM Funcionario
+WHERE Cidade <> 'Curitiba';
+
+SELECT *
+FROM Funcionario
+WHERE salario >= 1500;
+
+SELECT *
+FROM Funcionario
+WHERE salario <= 1500;
+```
+
+## Lógicos
+
+| Operador |    Operação    |
+|:--------:|:--------------:|
+|   AND    | E (Conjugação) |
+|    OR    | OU (Disjunção) |
+|   NOT    |    Negação     |
+
+```MySQL
+SELECT *
+FROM Funcionario
+WHERE Cidade = 'Curitiba'
+AND Salario = 1500;
+
+SELECT *
+FROM Funcionario
+WHERE Cidade = 'Curitiba'
+OR Salario = 1500;
+
+SELECT *
+FROM Funcionario
+WHERE NOT Cidade = 'Curitiba';
+```
+
+## Auxiliares
+
+| Operador |                    Operação                    |
+|:--------:|:----------------------------------------------:|
+| IS NULL  |          Verifica se o campo é vazio           |
+| BETWEEN  | Verifica se um campo está num range de valores |
+|    IN    |      Verifica se o valor existe na tabela      |
+|   LIKE   |     Verifica buscando valores semelhantes      |
+
+```MySQL
+SELECT *
+FROM Funcionario
+WHERE Cidade IS NULL;
+
+SELECT *
+FROM Funcionario
+WHERE Salario BETWEEN 1000 AND 2000;
+
+SELECT *
+FROM Funcionario
+WHERE Cidade IN ('Curitiba', 'Londrina');
+
+SELECT *
+FROM Funcinario
+WHERE Cidade NOT IN ('Curitiba', 'Londrina');
+
+SELECT * 
+FROM Funcionario
+WHERE NomeCompletoFuncionario LIKE 'Maria%'; -- Percentual no final permite procurar o termo em questão no início mesmo que haja outros caracteres na string
+
+SELECT *
+FROM Funcionario
+WHERE NomeCompletoFuncionario LIKE '%Silva'; -- Percentual no começo permite procurar o termo em questão no final mesmo que haja outros caracteres na string
+
+SELECT *
+FROM Funcionario
+WHERE NomeCompletoFucionario LIKE '%ada%'; -- Percentual no inicio e fim permite procurar o termo em questão em qualquer local da string.
+
+SELECT *
+FROM Funcionario
+WHERE NomeCompletoFuncionario = 'Maria%' -- O igual vai consultar os valores que possuem Maria e % na string, ou seja, a busca será literal, e não como no LIKE
+```
 
