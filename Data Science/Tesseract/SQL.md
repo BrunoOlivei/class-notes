@@ -257,3 +257,100 @@ FROM Funcionario
 WHERE NomeCompletoFuncionario = 'Maria%' -- O igual vai consultar os valores que possuem Maria e % na string, ou seja, a busca será literal, e não como no LIKE
 ```
 
+# Data e Hora
+
+- `GETDATE()`: data atual do sistema
+- `DAY()`: dia da data fornecida entre parênteses
+- `MONTH()`: mês da data fornecida entre parênteses
+- `YEAR()`: ano da data fornecida entre parênteses
+- `DATEADD(DAY, 5, <campo>)`: acrescenta 5 dias na data fornecida
+- `DATEADD(MONTH, 4, <campo>)`: acrescenta 4 meses na data fornecida
+- `DATEADD(YEAR, 7, <campo>)`: acrescenta 7 anos na data fornecida
+- `DATEDIFF(DAY, <campo>, GETDATE())`: diferença em dias da data do campo e a data de hoje
+- `DATENAME(WEEKDAY, <campo>)`: exibe o nome do dia da semana da data fornecida.
+
+# Funções de agregação
+ `COUNT`, `AVG`, `SUM`, `MAX`, `MIN`
+
+## `COUNT` (Contagem)
+
+```MySQL
+-- Quantidade de registros existentes
+SELECT COUNT(*)
+FROM Funcionario;
+
+-- Quantidade de cidades diferentes existentes
+SELECT COUNT(DISTINCT Cidade)
+FROM Funcionario;
+
+-- Quantidade de registros existentes da cidade de Londrina
+SELECT COUNT(*)
+FROM Funcionario
+WHERE Cidade = 'Londrina';
+```
+
+## `AVG` (Média)
+
+```MySQL
+-- Média dos salários dos funcionários
+SELECT AVG(Salario)
+FROM Funcionario;
+
+-- Média dos salários diferentes dos funcionários
+SELECT AVG(DISTINCT Salario)
+FROM Funcionario;
+
+-- Média dos salários dos funcionários de Londrina
+SELECT AVG(Salario)
+FROM Funcionario
+WHERE Cidade = 'Londrina';
+```
+
+## `SUM` (Soma)
+
+```MySQL
+-- Soma dos ssalários dos funcionários
+SELECT SUM(Salario)
+FROM Funcionario;
+
+-- Soma dos salários diferentes dos funcionários
+SELECT SUM(DISTINCT Salario)
+FROM Funcionario;
+
+-- Soma dos salários dos funcionários de Londrina
+SELECT SUM(Salario)
+FROM Funcionario
+WHERE Cidade = 'Londrina';
+```
+
+## `MAX` (Máximo) `MIN` (Mínimo)
+
+```MySQL
+-- Maior salário dos funcionarios
+SELECT MAX(Salario)
+FROM Funcionario;
+
+-- Menor salário dos funcionários
+SELECT MIN(Salario)
+FROM Funcionario;
+```
+
+# Agrupamento de dados
+
+## `GROUP BY`
+
+Usado junto com as funções de agregação
+
+```MySQL
+-- Quantidade de funcionários por cidade
+SELECT Cidade, COUNT(*)
+FROM Funcionario
+GROUP BY Cidade;
+
+-- Quantidade de funcionários por cidade que sejam maiores que 7
+SELECT Cidade, COUNT(*)
+FROM Funcionario
+GROUP BY Cidade
+HAVING COUNT(*) > 7;
+```
+
