@@ -66,3 +66,4 @@ SELECT
 	1883 AS RegistroProfessor,
     (SELECT MAX(RegistroFuncionario) FROM Funcionario) AS RegistroFuncionario, -- Cria na coluna RegistroFuncionario utilizando o valor máximo da tabela Funcionários
     'Robin Williams' AS NomeCompletoProfessor;
+

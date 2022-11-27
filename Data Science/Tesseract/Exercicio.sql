@@ -58,4 +58,35 @@ WITH avg_salary AS (
     WHERE salary > (
 		SELECT salary
 		FROM avg_salary);
-        
+
+-- Traga todas as informações dos jogadores cujo nome termina com 'Santos'
+SELECT *
+FROM Players
+WHERE name LIKE '%Santos';
+
+-- Traga todas as informações dos jogadores cujo nome começa com G
+SELECT *
+FROM Players
+WHERE name LIKE 'G%';
+
+-- Crie uma tabela chamada Games para armazenar os jogos, com as seguintes colunas:
+CREATE TABLE GAMES (
+	id INT AUTO_INCREMENT NOT NULL,
+    id_player INT NULL,
+    date_game DATE NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_player) REFERENCES Players (id)
+);
+
+-- Insira dois registros de partida na tabela Games, para os jogadores Melanie e Guilherme
+INSERT INTO GAMES
+VALUES
+	(1, 5, '2023-10-22'),
+    (2, 6, '2022-11-22');
+    
+-- Traga todas as informações dos jogadores que possuem partidas cadastradas usando JOIN
+SELECT *
+FROM Players P
+JOIN Games G
+ON G.id_player = P.id;
+
