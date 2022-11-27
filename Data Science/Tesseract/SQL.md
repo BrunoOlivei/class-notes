@@ -23,7 +23,7 @@ SELECT
 
 A forma mais usada para juntar duas ou mais tabelas diferentes para realizar consultas mais enxutas, porém há mais de uma forma de fazer essa junção:
 
-## CROSS JOIN
+## `CROSS JOIN`
 
 A variação menos utilizada, onde cruza os dados da tabela da esquerda para a direita gerando um produto cartesiano basicamente multiplicando o número de linhas de uma tabela pela outra, consumindo muito recurso computacional por exemplo, a realização de um `cross join` de uma tabela com 20 linhas e outra com 115 resulta em uma de 2300 linhas.
 
@@ -34,7 +34,7 @@ FROM Estudante E CROSS JOIN Professor P;
 
 No exemplo acima estamos mostrando o nome de todos os professores e todos os alunos como se todos os professores dessem aula para todos os estudantes.
 
-## INNER JOIN
+## `INNER JOIN`
 
 Um dos mais utilizados, retorna os registros de duas ou mais tabelas que satisfaçam uma condição,  ou seja que possuem algo em comum entre elas.
 
@@ -58,7 +58,7 @@ ON P.RegistroProfessor = D.RegistroFuncionario
 JOIN Estudante 
 ```
 
-## LEFT \[OUTER] JOIN
+## `LEFT \[OUTER] JOIN`
 
 Enquanto o `INNER JOIN`  foca na parte interna da intersecção entre duas tabelas, como no diagrama de Venn, o `OUTER JOIN` foca na parte externa, pegando mais de uma das entidades do que da outra.
 
@@ -81,7 +81,7 @@ WHERE D.RegistroProfessor IS NULL;
 
 Quando colocado o `WHERE` com comparação de `NULL`, ele se torna excludente e traz todos os registros da tabela esquerda, exceto os que fazem match com a tabela da direita.
 
-## RIGTH \[OUTER] JOIN
+## `RIGTH \[OUTER] JOIN`
 
 Retorna todos os registros da tabela direita e os correspondentes da tabela esquerda
 
@@ -102,7 +102,7 @@ ON B.RegistroAluno = E.RegistroAluno
 WHERE B.RegistroAluno IS NULL;
 ```
 
-## FULL \[OUTER] JOIN
+## `FULL \[OUTER] JOIN`
 
 Trás os dados que estão em ambas as tabelas.
 
@@ -352,5 +352,16 @@ SELECT Cidade, COUNT(*)
 FROM Funcionario
 GROUP BY Cidade
 HAVING COUNT(*) > 7;
+```
+
+# Ordenação e seleção de dados
+
+## `ORDER BY` e `TOP`
+
+```MySQL
+-- 5 jogadores que fizeram mais pontos no jogo
+SELECT TOP 5 *
+FROM Jogadores
+ORDER BY Pontos DESC;
 ```
 
