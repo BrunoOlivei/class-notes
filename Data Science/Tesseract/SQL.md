@@ -102,7 +102,7 @@ ON B.RegistroAluno = E.RegistroAluno
 WHERE B.RegistroAluno IS NULL;
 ```
 
-## `FULL \[OUTER] JOIN`
+## `FULL [OUTER] JOIN`
 
 Trás os dados que estão em ambas as tabelas.
 
