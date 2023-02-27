@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <rd:ReportUnitType>Mm</rd:ReportUnitType>
+  <rd:ReportID>2b9a11b7-c5c7-4889-b171-30437d19607d</rd:ReportID>
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>PBIRB</am:Name>
+      <am:Version>15.7.1801.18</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>PBIRB</am:Name>
+      <am:Version>15.7.1801.18</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2023-02-26T23:47:35.6402767Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="MeuWorkspace_DashboardVendas">
+      <rd:SecurityType>None</rd:SecurityType>
+      <ConnectionProperties>
+        <DataProvider>PBIDATASET</DataProvider>
+        <ConnectString>Data Source=pbiazure://api.powerbi.com/;Identity Provider="https://login.microsoftonline.com/common, https://analysis.windows.net/powerbi/api, f0b72488-7082-488a-a7e8-eada97bd842d";Initial Catalog=sobe_wowvirtualserver-3ceb557d-3d80-46b1-b17d-70a276ec569a;Integrated Security=ClaimsToken</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>8700dcbf-446d-47cf-a7a3-241500cd01ea</rd:DataSourceID>
+      <rd:PowerBIWorkspaceName>Meu Workspace</rd:PowerBIWorkspaceName>
+      <rd:PowerBIDatasetName>DashboardVendas</rd:PowerBIDatasetName>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsVendedores">
+      <Query>
+        <DataSourceName>MeuWorkspace_DashboardVendas</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="TbVendedoresRegiE3o">
+            <Value>=Parameters!TbVendedoresRegiE3o.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>DAX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Tb_Vendedores</DimensionName>
+                      <HierarchyName>Nome</HierarchyName>
+                      <HierarchyUniqueName>[Tb_Vendedores].[Nome]</HierarchyUniqueName>
+                      <LevelName>Nome</LevelName>
+                      <UniqueName>[Tb_Vendedores].[Nome].[Nome]</UniqueName>
+                    </ID>
+                    <ItemCaption>Nome</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Tb_Vendedores</DimensionName>
+                      <HierarchyName>Matricula</HierarchyName>
+                      <HierarchyUniqueName>[Tb_Vendedores].[Matricula]</HierarchyUniqueName>
+                      <LevelName>Matricula</LevelName>
+                      <UniqueName>[Tb_Vendedores].[Matricula].[Matricula]</UniqueName>
+                    </ID>
+                    <ItemCaption>Matricula</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Tb_Vendedores</DimensionName>
+                      <HierarchyName>E-mail</HierarchyName>
+                      <HierarchyUniqueName>[Tb_Vendedores].[E-mail]</HierarchyUniqueName>
+                      <LevelName>E-mail</LevelName>
+                      <UniqueName>[Tb_Vendedores].[E-mail].[E-mail]</UniqueName>
+                    </ID>
+                    <ItemCaption>E-mail</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Tb_Vendedores</DimensionName>
+                      <HierarchyName>Imagem</HierarchyName>
+                      <HierarchyUniqueName>[Tb_Vendedores].[Imagem]</HierarchyUniqueName>
+                      <LevelName>Imagem</LevelName>
+                      <UniqueName>[Tb_Vendedores].[Imagem].[Imagem]</UniqueName>
+                    </ID>
+                    <ItemCaption>Imagem</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>Tb_Vendedores</DimensionName>
+                      <HierarchyName>Região</HierarchyName>
+                      <HierarchyUniqueName>[Tb_Vendedores].[Região]</HierarchyUniqueName>
+                      <LevelName>Região</LevelName>
+                      <UniqueName>[Tb_Vendedores].[Região].[Região]</UniqueName>
+                    </ID>
+                    <ItemCaption>Região</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>Model</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[Tb_Vendedores].[Região]</HierarchyUniqueName>
+                    <Condition xsi:type="EqualTo">
+                      <Members />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties>
+                <IncludeMemberValue>true</IncludeMemberValue>
+              </QueryProperties>
+            </QuerySpecification>
+            <Query>
+              <Statement>EVALUATE SUMMARIZECOLUMNS('Tb_Vendedores'[Nome], 'Tb_Vendedores'[Matricula], 'Tb_Vendedores'[E-mail], 'Tb_Vendedores'[Imagem], 'Tb_Vendedores'[Região], RSCustomDaxFilter(@TbVendedoresRegiE3o,EqualToCondition,[Tb_Vendedores].[Região],String))</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>TbVendedoresRegiE3o</Name>
+                  <DefaultValues />
+                  <Caption>Região</Caption>
+                  <HierarchyUniqueName>[Tb_Vendedores].[Região]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Tb_Vendedores'[Região], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'Tb_Vendedores'[Região], "Blank()"), "ParameterValue", 'Tb_Vendedores'[Região], "ParameterLevel", [ParameterLevel], "'Tb_Vendedores'[Região]", 'Tb_Vendedores'[Região]) order by 'Tb_Vendedores'[Região], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <MultipleValues>true</MultipleValues>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+              </ParameterDefinitions>
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <CommandText>EVALUATE SUMMARIZECOLUMNS('Tb_Vendedores'[Nome], 'Tb_Vendedores'[Matricula], 'Tb_Vendedores'[E-mail], 'Tb_Vendedores'[Imagem], 'Tb_Vendedores'[Região], RSCustomDaxFilter(@TbVendedoresRegiE3o,EqualToCondition,[Tb_Vendedores].[Região],String))</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Nome">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Tb_Vendedores[Nome]</DataField>
+        </Field>
+        <Field Name="Matricula">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Tb_Vendedores[Matricula]</DataField>
+        </Field>
+        <Field Name="E_mail">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Tb_Vendedores[E-mail]</DataField>
+        </Field>
+        <Field Name="Imagem">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Tb_Vendedores[Imagem]</DataField>
+        </Field>
+        <Field Name="Região">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Tb_Vendedores[Região]</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="TbVendedoresRegiE3o">
+      <Query>
+        <DataSourceName>MeuWorkspace_DashboardVendas</DataSourceName>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>DAX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterCaption</MeasureName>
+                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterCaption</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterValue</MeasureName>
+                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterValue</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterLevel</MeasureName>
+                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterLevel</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>Model</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Tb_Vendedores'[Região], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'Tb_Vendedores'[Região], "Blank()"), "ParameterValue", 'Tb_Vendedores'[Região], "ParameterLevel", [ParameterLevel], "'Tb_Vendedores'[Região]", 'Tb_Vendedores'[Região]) order by 'Tb_Vendedores'[Região], [ParameterLevel]</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <rd:AutoGenerated>true</rd:AutoGenerated>
+        <rd:Hidden>true</rd:Hidden>
+        <CommandText>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Tb_Vendedores'[Região], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'Tb_Vendedores'[Região], "Blank()"), "ParameterValue", 'Tb_Vendedores'[Região], "ParameterLevel", [ParameterLevel], "'Tb_Vendedores'[Região]", 'Tb_Vendedores'[Região]) order by 'Tb_Vendedores'[Região], [ParameterLevel]</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ParameterCaption">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterCaption]</DataField>
+        </Field>
+        <Field Name="ParameterValue">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterValue]</DataField>
+        </Field>
+        <Field Name="ParameterLevel">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterLevel]</DataField>
+        </Field>
+        <Field Name="ParameterCaptionIndented">
+          <rd:TypeName>System.String</rd:TypeName>
+          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>89.82291mm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>41.66875mm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle1">
+                          <ReportItems>
+                            <Textbox Name="Nome">
+                              <rd:DefaultName>Nome</rd:DefaultName>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Nome.Value</Value>
+                                      <Style>
+                                        <FontSize>11pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>Gray</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>5.64722mm</Top>
+                              <Left>33.07291mm</Left>
+                              <Height>7.5875mm</Height>
+                              <Width>47.75416mm</Width>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Matricula">
+                              <rd:DefaultName>Matricula</rd:DefaultName>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Matricula.Value</Value>
+                                      <Style>
+                                        <FontSize>11pt</FontSize>
+                                        <Color>Gray</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>13.23472mm</Top>
+                              <Left>33.07291mm</Left>
+                              <Height>7.5875mm</Height>
+                              <Width>47.75416mm</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="E_mail">
+                              <rd:DefaultName>E_mail</rd:DefaultName>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!E_mail.Value</Value>
+                                      <Style>
+                                        <FontSize>11pt</FontSize>
+                                        <Color>Gray</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>20.82222mm</Top>
+                              <Left>33.07291mm</Left>
+                              <Height>7.5875mm</Height>
+                              <Width>47.75416mm</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Região">
+                              <rd:DefaultName>Região</rd:DefaultName>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Região.Value</Value>
+                                      <Style>
+                                        <FontSize>11pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>Gray</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>28.40972mm</Top>
+                              <Left>33.07291mm</Left>
+                              <Height>7.5875mm</Height>
+                              <Width>47.75417mm</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Image Name="FotoVendedor">
+                              <Source>External</Source>
+                              <Value>=Fields!Imagem.Value</Value>
+                              <Sizing>FitProportional</Sizing>
+                              <Top>5.82222mm</Top>
+                              <Left>7.67291mm</Left>
+                              <Height>30.175mm</Height>
+                              <Width>21.87917mm</Width>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Image>
+                            <Rectangle Name="Rectangle2">
+                              <KeepTogether>true</KeepTogether>
+                              <Top>0mm</Top>
+                              <Left>0mm</Left>
+                              <Height>3.08958mm</Height>
+                              <Width>89.82291mm</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>=Switch( Fields!Região.Value = "Sul", "#ED8975", 
+        Fields!Região.Value = "Sudeste", "#F2D096",  
+        Fields!Região.Value = "Nordeste", "#8FB9AA",  
+        Fields!Região.Value = "Norte", "#304D63", 
+        Fields!Região.Value = "Centro-Oeste", "#B2E7E8")</BackgroundColor>
+                              </Style>
+                            </Rectangle>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Detalhes" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dsVendedores</DataSetName>
+            <SortExpressions>
+              <SortExpression>
+                <Value>=Fields!Região.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!Nome.Value</Value>
+              </SortExpression>
+            </SortExpressions>
+            <Top>18.31408mm</Top>
+            <Left>28.80785mm</Left>
+            <Height>41.66875mm</Height>
+            <Width>89.82291mm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>65.4495mm</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>152.4mm</Width>
+      <Page>
+        <PageFooter>
+          <Height>11.43mm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>5.08mm</Top>
+              <Left>101.6mm</Left>
+              <Height>6.35mm</Height>
+              <Width>50.8mm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="TbVendedoresRegiE3o">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Região</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>TbVendedoresRegiE3o</DataSetName>
+          <ValueField>ParameterValue</ValueField>
+          <LabelField>ParameterCaptionIndented</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>TbVendedoresRegiE3o</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+</Report>
