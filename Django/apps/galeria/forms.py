@@ -3,26 +3,27 @@ from apps.galeria.models import Fotografia
 
 
 class FotografiaForms(forms.ModelForm):
+    '''Formulário de fotografia'''
     class Meta:
-        model = Fotografia
-        exclude = ["publicada", ]
+        model = Fotografia # Modelo de fotografia
+        exclude = ["publicada", ] # Campos a serem excluídos
         labels = {
-            "descricao": "Descrição",
-            "data_adicao": "Data de registro",
-            "usuario": "Usuário"
+            "descricao": "Descrição", # Label do campo
+            "data_adicao": "Data de registro", # Label do campo
+            "usuario": "Usuário" # Label do campo
         }
         widgets = {
-            "nome": forms.TextInput(attrs={'class': 'form-control'}),
-            'legenda': forms.TextInput(attrs={'class': 'form-control'}),
-            'categoria': forms.Select(attrs={'class': 'form-control'}),
-            'descricao': forms.Textarea(attrs={'class': 'form-control'}),
-            'foto': forms.FileInput(attrs={'class': 'form-control'}),
-            'data_adicao': forms.DateTimeInput(
+            "nome": forms.TextInput(attrs={'class': 'form-control'}), # Campo de nome
+            'legenda': forms.TextInput(attrs={'class': 'form-control'}), # Campo de legenda
+            'categoria': forms.Select(attrs={'class': 'form-control'}), # Campo de categoria
+            'descricao': forms.Textarea(attrs={'class': 'form-control'}), # Campo de descrição
+            'foto': forms.FileInput(attrs={'class': 'form-control'}), # Campo de foto
+            'data_adicao': forms.DateTimeInput( # Campo de data de adição
                 attrs={
-                    'type': 'datetime-local',
-                    'class': 'form-control',       
+                    'type': 'datetime-local', # Tipo de campo
+                    'class': 'form-control', # Classe do campo       
                 },
-                format='%d/%m/%Y %H:%M',                
+                format='%d/%m/%Y %H:%M', # Formato da data      
             ),
-            'usuario': forms.Select(attrs={'class': 'form-control'}),
+            'usuario': forms.Select(attrs={'class': 'form-control'}), # Campo de usuário
         }

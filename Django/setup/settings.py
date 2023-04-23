@@ -116,23 +116,46 @@ USE_I18N = True
 
 USE_TZ = True
 
+# AWS Config
+
+AWS_ACCESS_KEY_ID = str(os.getenv('AWS_ACCESS_KEY_ID')) # Chave de acesso
+
+AWS_SECRET_ACCESS_KEY = str(os.getenv('AWS_SECRET_ACCESS_KEY')) # Chave de acesso
+
+AWS_STORAGE_BUCKET_NAME = str(os.getenv('AWS_STORAGE_BUCKET_NAME')) # Nome do bucket
+
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com' # Nome do bucket
+
+AWS_DEFAULT_ACL = 'public-read' # Permissão de leitura
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400', # 1 dia
+}
+
+AWS_LOCATION = 'static' # Pasta para armazenar os arquivos
+
+AWS_QUERYSTRING_AUTH = False # Não autenticar
+
+AWS_HEADERS = {
+    'Access-Control-Allow-Origin': '*', # Allow access from any origin
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/' # URL para acessar os arquivos estáticos
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'setup/static')
+    os.path.join(BASE_DIR, 'setup/static') # Pasta para armazenar os arquivos estáticos
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Pasta para armazenar os arquivos estáticos
 
 # Media files
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Pasta para armazenar os arquivos de mídia
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/' # URL para acessar os arquivos de mídia
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -144,6 +167,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
-    messages.ERROR: 'danger',
-    messages.SUCCESS: 'success',
+    messages.ERROR: 'danger', # Bootstrap 4
+    messages.SUCCESS: 'success', # Bootstrap 4
 }

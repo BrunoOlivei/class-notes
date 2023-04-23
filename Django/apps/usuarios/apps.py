@@ -2,5 +2,6 @@ from django.apps import AppConfig
 
 
 class UsuariosConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.usuarios'
+    '''Configuração da aplicação de usuários'''
+    default_auto_field = 'django.db.models.BigAutoField' # Campo padrão
+    name = 'apps.usuarios' # Nome da aplicação

@@ -2,92 +2,95 @@ from django import forms
 
 
 class LoginForms(forms.Form):
-    nome_login = forms.CharField(
-        label='Nome de Login', 
-        required=True, 
-        max_length=100,
-        widget=forms.TextInput(
+    '''Formulário de login do usuário no sistema'''
+    nome_login = forms.CharField( # Campo de nome de login
+        label='Nome de Login', # Label do campo
+        required=True, # Campo obrigatório
+        max_length=100, # Tamanho máximo do campo
+        widget=forms.TextInput( # Tipo de campo
             attrs={
-                "class": "form-control",
-                "placeholder": "Ex.: João Silva"
+                "class": "form-control", # Classe do campo
+                "placeholder": "Ex.: João Silva" # Placeholder do campo (texto de exemplo)
             }
         )
     )
-    senha = forms.CharField(
-        label='Senha', 
-        required=True, 
-        max_length=70, 
-        widget=forms.PasswordInput(
+    senha = forms.CharField( # Campo de senha
+        label='Senha', # Label do campo
+        required=True, # Campo obrigatório 
+        max_length=70, # Tamanho máximo do campo 
+        widget=forms.PasswordInput( # Tipo de campo
             attrs={
-                "class": "form-control",
-                "placeholder": "Digite sua senha"
+                "class": "form-control", # Classe do campo 
+                "placeholder": "Digite sua senha" # Placeholder do campo (texto de exemplo)
             }
         )
     )
 
 
-class CadastroForms(forms.Form):
-    nome_cadastro = forms.CharField(
-        label='Nome completo', 
-        required=True, 
-        max_length=100,
-        widget=forms.TextInput(
+class CadastroForms(forms.Form): # Formulário de cadastro do usuário no sistema
+    nome_cadastro = forms.CharField( # Campo de nome de cadastro
+        label='Nome completo', # Label do campo 
+        required=True, # Campo obrigatório 
+        max_length=100, # Tamanho máximo do campo
+        widget=forms.TextInput( # Tipo de campo
             attrs={
-                "class": "form-control",
-                "placeholder": "Ex.: João Silva"
+                "class": "form-control", # Classe do campo
+                "placeholder": "Ex.: João Silva" # Placeholder do campo (texto de exemplo)
             }
         )
     )
-    email = forms.EmailField(
-        label='E-mail', 
-        required=True, 
-        max_length=100,
-        widget=forms.EmailInput(
+    email = forms.EmailField( # Campo de e-mail
+        label='E-mail', # Label do campo 
+        required=True, # Campo obrigatório 
+        max_length=100, # Tamanho máximo do campo
+        widget=forms.EmailInput( # Tipo de campo
             attrs={
-                "class": "form-control",
-                "placeholder": "Ex.:joaodasilva@gmail.com"
+                "class": "form-control", # Classe do campo
+                "placeholder": "Ex.:joaodasilva@gmail.com" # Placeholder do campo (texto de exemplo)
             }
         )
     )
-    senha_1 = forms.CharField(
-        label='Senha', 
-        required=True, 
-        max_length=70, 
-        widget=forms.PasswordInput(
+    senha_1 = forms.CharField( # Campo de senha
+        label='Senha', # Label do campo 
+        required=True, # Campo obrigatório 
+        max_length=70, # Tamanho máximo do campo
+        widget=forms.PasswordInput( # Tipo de campo
             attrs={
-                "class": "form-control",
-                "placeholder": "Digite sua senha"
+                "class": "form-control", # Classe do campo
+                "placeholder": "Digite sua senha" # Placeholder do campo (texto de exemplo)
             }
         )
     )
-    senha_2 = forms.CharField(
-        label='Confirmação de senha', 
-        required=True, 
-        max_length=70, 
-        widget=forms.PasswordInput(
+    senha_2 = forms.CharField( # Campo de confirmação de senha
+        label='Confirmação de senha', # Label do campo 
+        required=True, # Campo obrigatório
+        max_length=70, # Tamanho máximo do campo
+        widget=forms.PasswordInput( # Tipo de campo
             attrs={
-                "class": "form-control",
-                "placeholder": "Digite sua senha mais uma vez"
+                "class": "form-control", # Classe do campo
+                "placeholder": "Digite sua senha mais uma vez" # Placeholder do campo (texto de exemplo)
             }
         )
     )
 
     def clean_nome_cadastro(self):
-        nome = self.cleaned_data.get('nome_cadastro')
+        '''Método para limpar o campo de nome de cadastro e verificar se o nome não contém espaços'''
+        nome = self.cleaned_data.get('nome_cadastro') # Pega o valor do campo de nome de cadastro
 
-        if nome:
-            nome = nome.strip()
-            if " " in nome:
-                raise forms.ValidationError("O nome não pode conter espaços")
-            else:
-                return nome
+        if nome: # Verifica se o campo não está vazio
+            nome = nome.strip() # Remove os espaços do início e do fim do nome
+            if " " in nome: # Verifica se o nome contém espaços
+                raise forms.ValidationError("O nome não pode conter espaços") # Lança uma exceção
+            else: # Se o nome não contém espaços
+                return nome # Retorna o nome
     
     def clean_senha_2(self):
-        senha_1 = self.cleaned_data.get('senha_1')
-        senha_2 = self.cleaned_data.get('senha_2')
+        '''Método para limpar o campo de confirmação de senha e verificar se as senhas são iguais'''
+        senha_1 = self.cleaned_data.get('senha_1') # Pega o valor do campo de senha
+        senha_2 = self.cleaned_data.get('senha_2') # Pega o valor do campo de confirmação de senha
 
-        if senha_1 and senha_2:
-            if senha_1 != senha_2:
-                raise forms.ValidationError("As senhas não são iguais")
-            else:
-                return senha_2
+        if senha_1 and senha_2: # Verifica se os campos não estão vazios
+            if senha_1 != senha_2: # Verifica se as senhas são diferentes
+                raise forms.ValidationError("As senhas não são iguais") # Lança uma exceção
+            else: # Se as senhas são iguais
+                return senha_2 # Retorna a senha
