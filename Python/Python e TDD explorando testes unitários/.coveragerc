@@ -1,0 +1,9 @@
+[run]
+source = ./codigo # Path to the source code
+
+[report]
+exclude_lines = 
+    def __str__
+
+[html]
+directory = ./coverage_report
