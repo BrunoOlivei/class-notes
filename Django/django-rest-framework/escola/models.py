@@ -22,3 +22,14 @@ class Curso(models.Model):
 
     def __str__(self):
         return self.descricao
+    
+
+class Matricula(models.Model):
+    PERIODOS = (
+        ('M', 'Matutino'),
+        ('V', 'Vespertino'),
+        ('N', 'Noturno')
+    )
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE) # on_delete=models.CASCADE: se o aluno for excluído, as matrículas também serão
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE) # on_delete=models.CASCADE: se o curso for excluído, as matrículas também serão
+    periodo = models.CharField(max_length=1, null=False, blank=False, choices=PERIODOS, default='M') # choices = PERIODOS: só aceita os valores definidos em PERIODOS
