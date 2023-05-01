@@ -3,6 +3,8 @@ from escola.models import Aluno, Curso, Matricula # Importa os models Aluno e Cu
 from escola.serializer import AlunoSerializer, CursoSerializer, MatriculaSerializer, ListaMatriculasAlunoSerializer, ListaAlunosMatriculadosSerializer, \
     AlunoSerializerV2 # Importa os serializers AlunoSerializer e CursoSerializer do app escola
 from rest_framework.response import Response # Importa o módulo Response do rest_framework
+from django.utils.decorators import method_decorator # Importa o módulo method_decorator do django.utils.decorators
+from django.views.decorators.cache import cache_page # Importa o módulo cache_page do django.views.decorators.cache
 
 
 class AlunosViewSet(viewsets.ModelViewSet): 
@@ -29,12 +31,15 @@ class CursosViewSet(viewsets.ModelViewSet):
             response['location'] = request.build_absolute_uri() + object_id # Cria a URL para acessar o objeto criado
             return response # Retorna a resposta
 
-
 class MatriculaViewSet(viewsets.ModelViewSet):
     """Exibindo todas as matrículas"""
     queryset = Matricula.objects.all() # Consulta todos os objetos do model Matricula
     serializer_class = MatriculaSerializer # Classe que serializa os dados do model Matricula
     http_method_names = ['get', 'post', 'put', 'path'] # Define os métodos HTTP que serão aceitos
+
+    @method_decorator(cache_page(20)) # Define o tempo de cache da página em segundos
+    def dispatch(self, *args, **kwargs):
+        return super(MatriculaViewSet, self).dispatch(*args, **kwargs)
 
 class ListaMatriculasAluno(generics.ListAPIView):
     """Listando as matrículas de um aluno ou aluna"""

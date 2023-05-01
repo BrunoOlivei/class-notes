@@ -122,6 +122,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Media files (Imagens, vídeos, etc)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -131,13 +137,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
      'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
-    #  'DEFAULT_PERMISSION_CLASSES': [
-    #      'rest_framework.permissions.IsAuthenticated',
-    #      'rest_framework.permissions.DjangoModelPermissions'
-    #  ], # Permissão de autenticação
-    #  'DEFAULT_AUTHENTICATION_CLASSES': [
-    #         'rest_framework.authentication.BasicAuthentication',
-    #  ], # Autenticação básica
+     'DEFAULT_PERMISSION_CLASSES': [
+         'rest_framework.permissions.IsAuthenticated',
+         'rest_framework.permissions.DjangoModelPermissions'
+     ], # Permissão de autenticação
+     'DEFAULT_AUTHENTICATION_CLASSES': [
+            'rest_framework.authentication.BasicAuthentication',
+     ], # Autenticação básica
          'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle'

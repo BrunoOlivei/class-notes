@@ -5,7 +5,7 @@ from escola.models import Aluno, Curso, Matricula
 class AlunoSerializer(serializers.ModelSerializer): # Cria uma classe AlunoSerializer que herda de serializers.ModelSerializer
     class Meta: 
         model = Aluno # Aluno é o model que será serializado
-        fields = ['id', 'nome', 'rg', 'cpf', 'data_nascimento'] # Campos que serão serializados
+        fields = ['id', 'nome', 'rg', 'cpf', 'data_nascimento', 'foto'] # Campos que serão serializados
 
 
 class CursoSerializer(serializers.ModelSerializer): # Cria uma classe CursoSerializer que herda de serializers.ModelSerializer
@@ -37,5 +37,5 @@ class ListaAlunosMatriculadosSerializer(serializers.ModelSerializer):
 class AlunoSerializerV2(serializers.ModelSerializer): # Cria uma classe AlunoSerializer que herda de serializers.ModelSerializer
     class Meta: 
         model = Aluno # Aluno é o model que será serializado
-        fields = ['id', 'nome', 'celular', 'rg', 'cpf', 'data_nascimento'] # Campos que serão serializados
+        fields = ['id', 'nome', 'celular', 'rg', 'cpf', 'data_nascimento', 'foto'] # Campos que serão serializados
 
