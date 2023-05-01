@@ -1,6 +1,7 @@
 from rest_framework import viewsets, generics # Importa o módulo viewsets do rest_framework
 from escola.models import Aluno, Curso, Matricula # Importa os models Aluno e Curso do app escola
-from escola.serializer import AlunoSerializer, CursoSerializer, MatriculaSerializer, ListaMatriculasAlunoSerializer, ListaAlunosMatriculadosSerializer # Importa os serializers AlunoSerializer e CursoSerializer do app escola
+from escola.serializer import AlunoSerializer, CursoSerializer, MatriculaSerializer, ListaMatriculasAlunoSerializer, ListaAlunosMatriculadosSerializer, \
+    AlunoSerializerV2 # Importa os serializers AlunoSerializer e CursoSerializer do app escola
 from rest_framework.authentication import BasicAuthentication # Importa o módulo BasicAuthentication do rest_framework
 from rest_framework.permissions import IsAuthenticated # Importa o módulo IsAuthenticated do rest_framework
 
@@ -8,10 +9,13 @@ from rest_framework.permissions import IsAuthenticated # Importa o módulo IsAut
 class AlunosViewSet(viewsets.ModelViewSet): 
     """Exibindo todos os alunos e alunas"""
     queryset = Aluno.objects.all() # Consulta todos os objetos do model Aluno
-    serializer_class = AlunoSerializer # Classe que serializa os dados do model Aluno
     authentication_classes = [BasicAuthentication] # Autenticação básica
     permission_classes = [IsAuthenticated] # Permissão de autenticação
-
+    def get_serializer_class(self):
+        if self.request.version == 'v2': # Se a versão da requisição for v2
+            return AlunoSerializerV2 # Retorna a classe AlunoSerializerV2
+        else:
+            return AlunoSerializer # Classe que serializa os dados do model Aluno
 
 class CursosViewSet(viewsets.ModelViewSet):
     """Exibindo todos os cursos"""
